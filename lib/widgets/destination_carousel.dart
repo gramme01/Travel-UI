@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 import '../models/destination_model.dart';
 
@@ -37,14 +38,12 @@ class DestinationCarousel extends StatelessWidget {
         ),
         Container(
           height: 300.0,
-          color: Colors.blue,
           child: ListView.builder(
             scrollDirection: Axis.horizontal,
             itemCount: destinations.length,
             itemBuilder: (BuildContext context, int index) {
               Destination destination = destinations[index];
               return Container(
-                  color: Colors.red,
                   margin: EdgeInsets.all(10.0),
                   width: 210.0,
                   child: Stack(
@@ -70,12 +69,17 @@ class DestinationCarousel extends StatelessWidget {
                                   style: TextStyle(
                                     fontSize: 22.0,
                                     fontWeight: FontWeight.w600,
-                                    letterSpacing: 1.2,
                                   ),
+                                ),
+                                SizedBox(
+                                  height: 5.0,
                                 ),
                                 Text(
                                   '${destination.description}',
-                                  style: TextStyle(color: Colors.grey),
+                                  style: TextStyle(
+                                    color: Colors.grey,
+                                    fontSize: 12.0,
+                                  ),
                                 ),
                               ],
                             ),
@@ -105,11 +109,37 @@ class DestinationCarousel extends StatelessWidget {
                                 fit: BoxFit.cover,
                               ),
                             ),
-                            Column(
-                              children: <Widget>[
-                                Text('${destination.city}'),
-                                Text('${destination.country}'),
-                              ],
+                            Positioned(
+                              left: 10.0,
+                              bottom: 10.0,
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: <Widget>[
+                                  Text('${destination.city}',
+                                      style: TextStyle(
+                                        color: Colors.white,
+                                        fontSize: 24.0,
+                                        fontWeight: FontWeight.w600,
+                                        letterSpacing: 1.0,
+                                      )),
+                                  Row(
+                                    children: <Widget>[
+                                      Icon(
+                                        FontAwesomeIcons.locationArrow,
+                                        size: 10.0,
+                                        color: Colors.white70,
+                                      ),
+                                      SizedBox(width: 5.0),
+                                      Text(
+                                        '${destination.country}',
+                                        style: TextStyle(
+                                          color: Colors.white,
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ],
+                              ),
                             )
                           ],
                         ),
